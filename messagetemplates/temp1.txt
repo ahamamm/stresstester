@@ -1,0 +1,13 @@
+Transaction Report:
+-------------------
+Token ID: [nn:string:12]
+number Processed: [nn1:int:10]
+Amount Processed: $[amnt:float:-1]
+Transaction Date: [nn3:date:YYYY-MM-DD]
+Timestamp Logged: [nn4:date:hh:mm:ss.ooo]
+UUID: [nn5:uuid:-1]
+SysRef: [sysref:int:-1]
+BookEnteryRef: [bookentryref:string:-1]
+Compund: [h2m2:compound:B<date:YYYYMMDD>SA999900006H0031<date:HHmm><int:6>]
+Compund from value: [h2m2:compound:-1]
+Charges:$[chrgs:float:0.1]

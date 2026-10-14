@@ -1,0 +1,8 @@
+Transaction Report:
+-------------------
+Token ID: [nn:string:12]
+number Processed: [nn1:int:10]
+Amount Processed: $[nn2:float:8.2]
+Transaction Date: [nn3:date:YYYY-MM-DD]
+Timestamp Logged: [nn4:date:hh:mm:ss.ooo]
+UUID: [nn5:uuid:-1]

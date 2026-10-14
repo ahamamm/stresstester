@@ -1,0 +1,27 @@
+{
+  "name": "Test Template 2",
+  "endpointtype": "IBMQM",
+  "connectionstring": "OPFQM1AT.SVRCONN1/TCP/dripssitmq1lxv(1430)",
+  "queuemanager": "OPFQM1AT",
+  "queuename": "IPS.PAYREQ.IN",
+  "messagefilepath": "messagetemplates\\ips_pain1_template.txt",
+  "precalls": [
+    {
+      "order": 1,
+      "name": "bookentry-create",
+      "endpointtype": "SOAPWebService",
+      "endpointurl": "http://10.11.34.16:7837/AlRajhiCustAccount/BookedEntrySvcTrxn?",
+      "httpmethod": "POST",
+      "messagefilepath": "messagetemplates\\bookentry-create-precall.txt",
+      "statusxpath": "/soapenv:Envelope/soapenv:Body/rca:BookedEntrySvcTrxnRs/Hdr/arb:Status/arb:StatusCd",
+      "statussuccessvalue": "I000000",
+      "timeout": 10,
+      "variables": [
+        {
+          "variablename": "bookentryref",
+          "variablexpath": "/soapenv:Envelope/soapenv:Body/rca:BookedEntrySvcTrxnRs/Body/BookingInfo/BookedEntryRefNum"
+        }
+      ]
+    }
+  ]
+}

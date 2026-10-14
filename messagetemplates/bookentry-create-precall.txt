@@ -1,0 +1,43 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alr="http://www.alrajhiwebservices.com/AlRajhiCustAccount" xmlns:alr1="http://www.alrajhiwebservices.com/">
+              <soapenv:Header/>
+              <soapenv:Body>
+                             <ns3:BookedEntrySvcTrxnRq xmlns:ns2="http://www.alrajhiwebservices.com/" xmlns:ns3="http://www.alrajhiwebservices.com/AlRajhiCustAccount">
+                                           <Hdr>
+                                                          <ns2:Msg>
+                                                                        <ns2:RqID>[rqid:uuid:-1]</ns2:RqID>
+                                                                        <ns2:SvcID>0040</ns2:SvcID>
+                                                                        <ns2:SubSvcID>0301</ns2:SubSvcID>
+                                                                        <ns2:FuncID>0001</ns2:FuncID>
+                                                                        <ns2:MsgTimestamp>[msgtimestamp:date:YYYY-MM-DDThh:mm:ss]</ns2:MsgTimestamp>
+                                                          </ns2:Msg>
+                                                          <ns2:Agt>
+                                                                        <ns2:IDTyp>02</ns2:IDTyp>
+                                                                        <ns2:IDNum>9874101245</ns2:IDNum>
+                                                          </ns2:Agt>
+                                                          <ns2:Sys>
+                                                                        <ns2:ChID>OTHER</ns2:ChID>
+                                                                        <ns2:ExternalSysID>IPS</ns2:ExternalSysID>
+                                                                        <ns2:SessionID>[sessionid:uuid:-1]</ns2:SessionID>
+                                                                        <ns2:IPAddr>10.11.203.59</ns2:IPAddr>
+                                                                        <ns2:OSID>99</ns2:OSID>
+                                                                        <ns2:CtryCd>SA</ns2:CtryCd>
+                                                          </ns2:Sys>
+                                           </Hdr>
+                                           <Body>
+                                                         <IBAN>SA6180000204608015630373</IBAN>
+                                                          <TrxnAmount>
+                                                                        <ns2:Amount>[amnt:float:3.2]</ns2:Amount>
+                                                                        <ns2:Currency>SAR</ns2:Currency>
+                                                          </TrxnAmount>
+                                                          <BookingInfo>
+                                                                        <BookingSvc>CREATE</BookingSvc>
+                                                                        <TrnxCode>A86</TrnxCode>
+                                                                        <SystemTrxnRef>[sysref:int:10]</SystemTrxnRef>
+                                                                        <Desc>Outward IPS Credit Transfer</Desc>
+                                                                        <BookedEntryTyp>28</BookedEntryTyp>
+                                                                        <BookingExpiryDate>2099-03-25</BookingExpiryDate>
+                                                          </BookingInfo>
+                                           </Body>
+                             </ns3:BookedEntrySvcTrxnRq>
+              </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,112 @@
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.09">
+	<CstmrCdtTrfInitn>
+		<GrpHdr>
+			<MsgId>[msgd:nduuid:-1]</MsgId>
+			<CreDtTm>[credt:compound:<date:YYYY-MM-DD>T<date:hh:mm:ss>]+03:00</CreDtTm>
+			<NbOfTxs>1</NbOfTxs>
+			<InitgPty>
+				<Nm>DHANUSH DHONI VIMAL AKINAS</Nm>
+			</InitgPty>
+		</GrpHdr>
+		<PmtInf>
+			<PmtInfId>[pmtinfid:int:16]</PmtInfId>
+			<PmtMtd>TRF</PmtMtd>
+			<ReqdExctnDt>
+				<Dt>[reqdexctndt:date:YYYY-MM-DD]</Dt>
+			</ReqdExctnDt>
+			<Dbtr>
+				<Nm>DHANUSH DHONI VIMAL AKINAS</Nm>
+				<PstlAdr>
+					<AdrTp>
+						<Cd>ADDR</Cd>
+					</AdrTp>
+					<PstCd>11111</PstCd>
+					<TwnNm>AL RIYADH</TwnNm>
+					<Ctry>SA</Ctry>
+				</PstlAdr>
+				<Id>
+					<PrvtId>
+						<Othr>
+							<Id>1200993127</Id>
+							<SchmeNm>
+								<Cd>NIDN</Cd>
+							</SchmeNm>
+						</Othr>
+						<Othr>
+							<Id>0000000125181006</Id>
+							<SchmeNm>
+								<Cd>CUST</Cd>
+							</SchmeNm>
+						</Othr>
+					</PrvtId>
+				</Id>
+				<CtryOfRes>SA</CtryOfRes>
+			</Dbtr>
+			<DbtrAcct>
+				<Id>
+					<IBAN>SA6180000204608015630373</IBAN>
+				</Id>
+				<Ccy>SAR</Ccy>
+				<Nm>Stress Tester ansh</Nm>
+			</DbtrAcct>
+			<DbtrAgt>
+				<FinInstnId>
+					<ClrSysMmbId>
+						<MmbId>SARJHI</MmbId>
+					</ClrSysMmbId>
+				</FinInstnId>
+			</DbtrAgt>
+			<CdtTrfTxInf>
+				<PmtId>
+					<InstrId>[instrid:nduuid:-1]</InstrId>
+					<EndToEndId>[pmtinfid:int:-1]</EndToEndId>
+				</PmtId>
+				<PmtTpInf>
+					<SvcLvl>
+						<Cd>SDVA</Cd>
+					</SvcLvl>
+					<LclInstrm>
+						<Prtry>DIPS</Prtry>
+					</LclInstrm>
+					<CtgyPurp>
+						<Cd>OTHR</Cd>
+					</CtgyPurp>
+				</PmtTpInf>
+				<Amt>
+					<InstdAmt Ccy="SAR">[amnt:float:-1]</InstdAmt>
+				</Amt>
+				<CdtrAgt>
+					<FinInstnId>
+						<ClrSysMmbId>
+							<MmbId>SANCBK</MmbId>
+						</ClrSysMmbId>
+					</FinInstnId>
+				</CdtrAgt>
+				<Cdtr>
+					<Nm>SAUDI KSA LOCALACOUNT</Nm>
+				</Cdtr>
+				<CdtrAcct>
+					<Id>
+						<IBAN>SA7810000011100080346505</IBAN>
+					</Id>
+				</CdtrAcct>
+				<RmtInf>
+					<Ustrd>PaymentRef|OTHR</Ustrd>
+				</RmtInf>
+				<SplmtryData>
+					<Envlp>
+						<Document xmlns="urn:fis:iso:20022:tech:xsd:supl.001.001.01">
+							<BusChanl>Mobile Banking</BusChanl>
+							<FndsRsvtRcptId>[bookentryref:string:-1]</FndsRsvtRcptId>
+							<ChgsRsvtRcptId>SKIPRELENTRY</ChgsRsvtRcptId>
+							<SrcSystm>POM</SrcSystm>
+							<ChgsAmt Ccy="SAR">[chrgs:float:0.1]</ChgsAmt>
+							<AllRemarks>000006354360000000701</AllRemarks>
+							<IPAddr>41.235.235.120</IPAddr>
+						</Document>
+					</Envlp>
+				</SplmtryData>
+			</CdtTrfTxInf>
+		</PmtInf>
+	</CstmrCdtTrfInitn>
+</Document>

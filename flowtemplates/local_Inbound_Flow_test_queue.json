@@ -1,0 +1,21 @@
+{
+  "name": "Test Template 2",
+  "endpointtype": "IBMQM",
+  "connectionstring": "APP1.SVRCONN/TCP/10.11.34.132(1425)",
+  "queuemanager": "QPFQMS01",
+  "queuename": "TESTQUEUE",
+  "messagefilepath": "messagetemplates\\ips_pacs8_template.txt",
+  "Wholemessageprocesses": [
+    {
+      "order": 1,
+      "process": "JSR105SignerExtention",
+      "params": {
+        "KEYSTORE_PASSWORD": "password2",
+        "KEY_PASSWORD": "password2",
+        "LOCAL_PART": "Message",
+        "KEYSTORE_LOCATION":"/files/ansh.jks",
+        "KEY_ALIAS":"ansh"
+      }
+    }
+  ]
+}

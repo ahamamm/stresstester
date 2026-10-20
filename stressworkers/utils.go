@@ -5,18 +5,17 @@ import (
 	"log"
 
 	//import stresstester/jsonreader
+	"stresstester/connectors"
 	"stresstester/flowcontextloader"
 	"stresstester/request"
-
 	//import stresstester/mqutil
-	mqutil "stresstester/mqutil"
 )
 
-func SendNumberOfMessages(workerNumber int, messageumber int, messageTemp string, connectionParam *flowcontextloader.Jsonmapper) (string, error, int, int) {
+func SendNumberOfMessages(workerNumber int, messageumber int, messageTemp string, connectionParam *flowcontextloader.Contextmapper, connector connectors.Connectorinterface) (string, error, int, int) {
 	var count int
 	count = 0
 
-	err := mqutil.Init(connectionParam.Connectionstring, connectionParam.Queuemanager, connectionParam.Queuename)
+	err := connector.Connect()
 	if err != nil {
 		return "", err, workerNumber, count
 	}
@@ -52,18 +51,18 @@ func SendNumberOfMessages(workerNumber int, messageumber int, messageTemp string
 		} else {
 			finalmessage = req.ProcessedMessage
 		}
-		err = mqutil.Putmessage(finalmessage)
+		err = connector.Sendmessage(finalmessage, nil)
 		if err != nil {
 			return "", err, workerNumber, count
 		}
 		count++
 	}
-	mqutil.CloseConn()
+	connector.Close()
 
-	return fmt.Sprintf("Worker %d finished job and %d %s", workerNumber, count, " Message(s) sent 🎉 successfully!"), nil, workerNumber, count
+	return fmt.Sprintf("Worker %d finished job and %d %s", workerNumber, count, " Message(s) sent ��� successfully!"), nil, workerNumber, count
 }
 
-func SendNumberOfMessageswithoutConnect(messageumber int, messageTemp string, connectionParam *flowcontextloader.Jsonmapper) ([]error, int, int) {
+func SendNumberOfMessageswithoutConnect(messageumber int, messageTemp string, connectionParam *flowcontextloader.Contextmapper, connector connectors.Connectorinterface) ([]error, int, int) {
 	var errs []error
 	var count int
 	var errorCount int
@@ -108,7 +107,7 @@ func SendNumberOfMessageswithoutConnect(messageumber int, messageTemp string, co
 			finalmessage = req.ProcessedMessage
 		}
 
-		err = mqutil.Putmessage(finalmessage)
+		err = connector.Sendmessage(finalmessage, nil)
 		if err != nil {
 			errs = append(errs, err)
 			errorCount++

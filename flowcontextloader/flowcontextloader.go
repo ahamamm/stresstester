@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-type Jsonmapper struct {
+type Contextmapper struct {
 	Name                  string                `json:"name"`
 	Endpointtype          string                `json:"endpointtype"`
 	Connectionstring      string                `json:"connectionstring"`
@@ -96,8 +96,8 @@ type Variable struct {
 	Variablexpath string `json:"variablexpath,omitempty"`
 }
 
-func Mappjson(templatepath string) (Jsonmapper, error) {
-	jsonmapper := Jsonmapper{}
+func Mappjson(templatepath string) (Contextmapper, error) {
+	jsonmapper := Contextmapper{}
 	fileBytes, err := os.ReadFile(templatepath)
 	if err != nil {
 		return jsonmapper, err

@@ -6,6 +6,7 @@ import (
 	"os"
 
 	//import stresstester/jsonreader
+	"stresstester/connectors"
 	"stresstester/flowcontextloader"
 	"stresstester/utils"
 
@@ -30,7 +31,7 @@ func main() {
 	duration := flag.Int("duration", 0, "test duration")
 	messages := flag.Int("messages", 1, "Number of messages to be sent")
 
-	//  Parse the flags. This must be called before using the variables.
+	// Parse the flags. This must be called before using the variables.
 	flag.Parse()
 
 	// Access the values using pointers (*variableName)
@@ -48,7 +49,7 @@ func main() {
 	}
 
 	if *messages <= 0 {
-		log.Fatalf("Critical error: Number of messages  must be >= 1")
+		log.Fatalf("Critical error: Number of messages must be >= 1")
 		os.Exit(1)
 	}
 
@@ -73,12 +74,19 @@ func main() {
 
 	var pickedworker stressworkers.Workerinterface
 	err, pickedworker = utils.Workerpicker(strategy, per, connectionParam.Endpointtype, frqnc, duration)
-	log.Println("Selected Worker is:", pickedworker.Name())
-
 	if err != nil {
 		log.Fatalf("Critical error: %v", err)
 		os.Exit(1)
 	}
+	log.Println("Selected Worker is:", pickedworker.Name())
 
-	pickedworker.Run(workers, messages, frqnc, duration, per, messageTemp, &connectionParam)
+	var pickedconnector connectors.Connectorinterface
+	err, pickedconnector = utils.Connectorpicker(connectionParam)
+	if err != nil {
+		log.Fatalf("Critical error: %v", err)
+		os.Exit(1)
+	}
+	log.Println("Selected Connector is:", pickedconnector.Name())
+
+	pickedworker.Run(workers, messages, frqnc, duration, per, messageTemp, &connectionParam, pickedconnector)
 }

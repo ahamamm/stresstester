@@ -21,4 +21,17 @@ docker run
 
 
 
-docker run   --platform linux/amd64   --env LICENSE=accept   --env MQ_QMGR_NAME=QM1   --env Q_ADMIN_PASSWORD=passw0rd   --env MQ_APP_PASSWORD=passw0rd   --publish 1414:1414   --publish 9443:9443   --detach   --name my-ibm-mq   icr.io/ibm-messaging/mq:latest && docker logs -f my-ibm-mq
+docker run   --platform linux/amd64   --env LICENSE=accept   --env MQ_QMGR_NAME=QM1   --env MQ_ADMIN_PASSWORD=passw0rd   --env MQ_APP_PASSWORD=passw0rd   --publish 1414:1414   --publish 9443:9443   --detach   --name my-ibm-mq   icr.io/ibm-messaging/mq:latest && docker logs -f my-ibm-mq
+
+
+podman run --platform linux/amd64 --env LICENSE=accept --env MQ_QMGR_NAME=QM1 --env MQ_ADMIN_PASSWORD=passw0rd --env MQ_APP_PASSWORD=passw0rd -v /Users/shared/mq_storage:/mnt/mqm:Z --publish 1414:1414 --publish 9443:9443 --detach --name my-ibm-mq icr.io/ibm-messaging/mq:latest && podman logs -f my-ibm-mq
+
+
+--------------------------------------------------
+
+
+echo "passw0rd" | podman secret create mq_admin_password -
+echo "passw0rd" | podman secret create mq_app_password -
+
+podman run --platform linux/amd64 --env LICENSE=accept --env MQ_QMGR_NAME=QM1 --secret mq_admin_password --secret mq_app_password --publish 1414:1414 --publish 9443:9443 --detach --name my-ibm-mq icr.io/ibm-messaging/mq:latest
+----------------------------------------------------------

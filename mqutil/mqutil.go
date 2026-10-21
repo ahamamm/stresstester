@@ -28,7 +28,7 @@ func setqueue(q *ibmmq.MQObject) {
 	queue = q
 }
 
-func Init(channelname, connectionname, qMgrName, qName, userid, password string) error {
+func Init(channelname, connectionname, qmgrName, qName, authenticationType, userid, password string) error {
 
 	//os.Setenv("MQSERVER", Connectionstring)
 
@@ -44,20 +44,27 @@ func Init(channelname, connectionname, qMgrName, qName, userid, password string)
 	cd.ConnectionName = connectionname //"localhost(1414)" // Adjust to your container IP/Port if different
 	cno.ClientConn = cd
 
-	csp := ibmmq.NewMQCSP()
-	csp.AuthenticationType = ibmmq.MQCSP_AUTH_USER_ID_AND_PWD
-	csp.UserId = userid //"app"
-	decpasssword, err := utils.Decodebase64(password)
-	if err != nil {
-		csp.Password = password //"passw0rd"
-	} else {
-		csp.Password = decpasssword //"passw0rd"
+	var csp *ibmmq.MQCSP
+
+	switch authenticationType {
+	case "MQCSP_AUTH_USER_ID_AND_PWD":
+		csp = ibmmq.NewMQCSP()
+		csp.AuthenticationType = ibmmq.MQCSP_AUTH_USER_ID_AND_PWD
+		csp.AuthenticationType = ibmmq.MQCSP_AUTH_USER_ID_AND_PWD
+		csp.UserId = userid //"app"
+		decpasssword, err := utils.Decodebase64(password)
+		if err != nil {
+			csp.Password = password //"passw0rd"
+		} else {
+			csp.Password = decpasssword //"passw0rd"
+		}
+		cno.SecurityParms = csp
+	default:
+
 	}
 
-	cno.SecurityParms = csp
-
 	// 3. CONNECT TO THE QUEUE MANAGER
-	qMgr, err := ibmmq.Connx(qMgrName, cno)
+	qMgr, err := ibmmq.Connx(qmgrName, cno)
 	if err != nil {
 		return err
 	}

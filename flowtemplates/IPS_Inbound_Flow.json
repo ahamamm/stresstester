@@ -1,9 +1,15 @@
 {
   "name": "Test Template 2",
   "endpointtype": "IBMQM",
-  "connectionstring": "SARJHI.IPS1.SVRCON/TCP/dripssitmq1lxv(1433)",
-  "queuemanager": "SARJHI.IPS_MQ1",
-  "queuename": "SARJHI_MQ1.REQUEST.FROM.IPS_MQ1",
+  "Ibmmqconninfo": {
+    "connectionname": "dripssitmq1lxv(1433)",
+    "channelname": "SARJHI.IPS1.SVRCON",
+    "queuemanager": "SARJHI.IPS_MQ1",
+    "queuename": "SARJHI_MQ1.REQUEST.FROM.IPS_MQ1",
+    "authenticationtype": "NA",
+    "userid": "",
+    "password": ""
+  },
   "messagefilepath": "messagetemplates\\ips_pacs8_template.txt",
   "Wholemessageprocesses": [
     {
@@ -13,8 +19,8 @@
         "KEYSTORE_PASSWORD": "password2",
         "KEY_PASSWORD": "password2",
         "LOCAL_PART": "Message",
-        "KEYSTORE_LOCATION":"D:\\code\\GoCode\\stresstester\\files\\ips.jks",
-        "KEY_ALIAS":"ips"
+        "KEYSTORE_LOCATION": "D:\\code\\GoCode\\stresstester\\files\\ips.jks",
+        "KEY_ALIAS": "ips"
       }
     }
   ]

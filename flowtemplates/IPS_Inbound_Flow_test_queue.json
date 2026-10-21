@@ -1,9 +1,15 @@
 {
   "name": "Test Template 2",
   "endpointtype": "IBMQM",
-  "connectionstring": "APP1.SVRCONN/TCP/10.11.34.132(1425)",
-  "queuemanager": "QPFQMS01",
-  "queuename": "TESTQUEUE",
+  "Ibmmqconninfo": {
+    "connectionname": "10.11.34.132(1425)",
+    "channelname": "APP1.SVRCONN",
+    "queuemanager": "QPFQMS01",
+    "queuename": "TESTQUEUE",
+    "authenticationtype": "NA",
+    "userid": "",
+    "password": ""
+  },
   "messagefilepath": "messagetemplates\\ips_pacs8_template.txt",
   "Wholemessageprocesses": [
     {
@@ -13,8 +19,8 @@
         "KEYSTORE_PASSWORD": "password2",
         "KEY_PASSWORD": "password2",
         "LOCAL_PART": "Message",
-        "KEYSTORE_LOCATION":"D:\\code\\GoCode\\stresstester\\files\\ips.jks",
-        "KEY_ALIAS":"ips"
+        "KEYSTORE_LOCATION": "D:\\code\\GoCode\\stresstester\\files\\ips.jks",
+        "KEY_ALIAS": "ips"
       }
     }
   ]

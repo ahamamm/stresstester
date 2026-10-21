@@ -1,9 +1,15 @@
 {
   "name": "Test Template 2",
   "endpointtype": "IBMQM",
-  "connectionstring": "OPFQM1AT.SVRCONN1/TCP/dripssitmq1lxv(1430)",
-  "queuemanager": "OPFQM1AT",
-  "queuename": "IPS.PAYREQ.IN",
+  "Ibmmqconninfo": {
+    "connectionname": "dripssitmq1lxv(1430)",
+    "channelname": "OPFQM1AT.SVRCONN1",
+    "queuemanager": "IPS.PAYREQ.IN",
+    "queuename": "SARJHI_MQ1.REQUEST.FROM.IPS_MQ1",
+    "authenticationtype": "NA",
+    "userid": "",
+    "password": ""
+  },
   "messagefilepath": "messagetemplates\\ips_pain1_template.txt",
   "precalls": [
     {

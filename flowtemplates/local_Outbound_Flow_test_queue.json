@@ -1,10 +1,16 @@
 {
   "name": "Test Template 2",
   "endpointtype": "IBMQM",
-  "connectionstring": "APP1.SVRCONN/TCP/10.11.34.132(1425)",
-  "queuemanager": "QPFQMS01",
-  "queuename": "TESTQUEUE",
-  "messagefilepath": "messagetemplates\\temp1.txt",
+  "Ibmmqconninfo": {
+    "connectionname": "localhost(1414)",
+    "channelname": "DEV.APP.SVRCONN",
+    "queuemanager": "QM1",
+    "queuename": "DEV.QUEUE.1",
+    "authenticationtype": "MQCSP_AUTH_USER_ID_AND_PWD",
+    "userid": "app",
+    "password": "cGFzc3cwcmQ="
+  },
+  "messagefilepath": "messagetemplates/temp1.txt",
   "precalls": [
     {
       "order": 1,

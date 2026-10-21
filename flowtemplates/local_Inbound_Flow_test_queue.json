@@ -1,10 +1,10 @@
 {
   "name": "Test Template 2",
   "endpointtype": "IBMQM",
-  "connectionstring": "APP1.SVRCONN/TCP/10.11.34.132(1425)",
-  "queuemanager": "QPFQMS01",
-  "queuename": "TESTQUEUE",
-  "messagefilepath": "messagetemplates\\ips_pacs8_template.txt",
+  "connectionstring": "DEV.APP.SVRCONN/TCP/localhost(1414)",
+  "queuemanager": "QM1",
+  "queuename": "DEV.QUEUE.1",
+  "messagefilepath": "messagetemplates/ips_pacs8_template.txt",
   "Wholemessageprocesses": [
     {
       "order": 1,

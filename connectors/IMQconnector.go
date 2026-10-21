@@ -10,7 +10,7 @@ func (imc IBMMQconnector) Name() string {
 
 func (imc IBMMQconnector) Connect() error {
 
-	return mqutil.Init(imc.Connectionstring, imc.Queuemanager, imc.Queuename)
+	return mqutil.Init(imc.Ibmmqconninfo.Channelname, imc.Ibmmqconninfo.Connectionname, imc.Ibmmqconninfo.Queuemanager, imc.Ibmmqconninfo.Queuename, imc.Ibmmqconninfo.Userid, imc.Ibmmqconninfo.Password)
 }
 
 func (imc IBMMQconnector) Close() error {

@@ -1,4 +1,4 @@
-package utils
+package pickers
 
 import (
 	"errors"
@@ -11,7 +11,7 @@ func Connectorpicker(contextmapper flowcontextloader.Contextmapper) (error, conn
 	var err error
 
 	if contextmapper.Endpointtype == "IBMQM" {
-		ci = connectors.IBMMQconnector{Connectionstring: contextmapper.Connectionstring, Queuemanager: contextmapper.Queuemanager, Queuename: contextmapper.Queuename}
+		ci = connectors.IBMMQconnector{Ibmmqconninfo: contextmapper.Ibmmqconninfo}
 	} else {
 		ci = connectors.NoConnectorSelected{}
 		err = errors.New("Wrong Endpoint type, No Connector selected, check your parameters.")

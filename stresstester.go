@@ -8,6 +8,7 @@ import (
 	//import stresstester/jsonreader
 	"stresstester/connectors"
 	"stresstester/flowcontextloader"
+	"stresstester/pickers"
 	"stresstester/utils"
 
 	//import stresstester/mqutil
@@ -73,7 +74,7 @@ func main() {
 	//fmt.Printf("%#v\n", connectionParam)
 
 	var pickedworker stressworkers.Workerinterface
-	err, pickedworker = utils.Workerpicker(strategy, per, connectionParam.Endpointtype, frqnc, duration)
+	err, pickedworker = pickers.Workerpicker(strategy, per, connectionParam.Endpointtype, frqnc, duration)
 	if err != nil {
 		log.Fatalf("Critical error: %v", err)
 		os.Exit(1)
@@ -81,7 +82,7 @@ func main() {
 	log.Println("Selected Worker is:", pickedworker.Name())
 
 	var pickedconnector connectors.Connectorinterface
-	err, pickedconnector = utils.Connectorpicker(connectionParam)
+	err, pickedconnector = pickers.Connectorpicker(connectionParam)
 	if err != nil {
 		log.Fatalf("Critical error: %v", err)
 		os.Exit(1)

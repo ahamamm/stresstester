@@ -8,12 +8,19 @@ import (
 type Contextmapper struct {
 	Name                  string                `json:"name"`
 	Endpointtype          string                `json:"endpointtype"`
-	Connectionstring      string                `json:"connectionstring"`
-	Queuemanager          string                `json:"queuemanager"`
-	Queuename             string                `json:"queuename"`
+	Ibmmqconninfo         Ibmmqconnectioninfo   `json:"ibmmqconninfo"`
 	Messagefilepath       string                `json:"messagefilepath"`
 	Precalls              []Precall             `json:"precalls,omitempty"`
 	Wholemessageprocesses []Wholemessageprocess `json:"wholemessageprocesses,omitempty"`
+}
+type Ibmmqconnectioninfo struct {
+	Connectionname     string `json:"connectionname"`
+	Channelname        string `json:"channelname"`
+	Queuemanager       string `json:"queuemanager"`
+	Queuename          string `json:"queuename"`
+	Authenticationtype string `json:"authenticationtype"`
+	Userid             string `json:"userid"`
+	Password           string `json:"password"`
 }
 
 type Precall struct {

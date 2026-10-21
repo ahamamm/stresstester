@@ -1,9 +1,15 @@
 {
   "name": "Test Template 2",
   "endpointtype": "IBMQM",
-  "connectionstring": "DEV.APP.SVRCONN/TCP/localhost(1414)",
-  "queuemanager": "QM1",
-  "queuename": "DEV.QUEUE.1",
+  "Ibmmqconninfo": {
+    "connectionname": "localhost(1414)",
+    "channelname": "DEV.APP.SVRCONN",
+    "queuemanager": "QM1",
+    "queuename": "DEV.QUEUE.1",
+    "authenticationtype": "AUTH_USER_ID_AND_PWD",
+    "userid": "app",
+    "password": "cGFzc3cwcmQ="
+  },
   "messagefilepath": "messagetemplates/ips_pacs8_template.txt",
   "Wholemessageprocesses": [
     {
@@ -13,8 +19,8 @@
         "KEYSTORE_PASSWORD": "password2",
         "KEY_PASSWORD": "password2",
         "LOCAL_PART": "Message",
-        "KEYSTORE_LOCATION":"/files/ansh.jks",
-        "KEY_ALIAS":"ansh"
+        "KEYSTORE_LOCATION": "/files/ansh.jks",
+        "KEY_ALIAS": "ansh"
       }
     }
   ]

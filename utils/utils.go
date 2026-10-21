@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"encoding/base64"
+	"fmt"
 	"os"
 	"path/filepath"
 )
@@ -26,4 +28,16 @@ func GetRealPath(relativepath string) (string, error) {
 	}
 	absPath := filepath.Join(wd, relativepath)
 	return absPath, nil
+}
+
+func Decodebase64(encodedstring string) (string, error) {
+	decodedBytes, err := base64.StdEncoding.DecodeString(encodedstring)
+	if err != nil {
+		fmt.Println("Error decoding string:", err)
+		return encodedstring, err
+	}
+
+	// Convert []byte back to string
+	decodedStr := string(decodedBytes)
+	return decodedStr, nil
 }

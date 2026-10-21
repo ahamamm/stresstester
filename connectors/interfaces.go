@@ -1,5 +1,7 @@
 package connectors
 
+import "stresstester/flowcontextloader"
+
 type Connectorinterface interface {
 	Name() string
 	Connect() error
@@ -8,9 +10,7 @@ type Connectorinterface interface {
 }
 
 type IBMMQconnector struct {
-	Connectionstring string
-	Queuemanager     string
-	Queuename        string
+	Ibmmqconninfo flowcontextloader.Ibmmqconnectioninfo
 }
 
 type NoConnectorSelected struct{}

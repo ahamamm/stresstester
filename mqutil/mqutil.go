@@ -1,8 +1,7 @@
 package mqutil
 
 import (
-	"log"
-	"os"
+	"stresstester/utils"
 	"sync"
 
 	// Import the v5 ibmmq package
@@ -29,18 +28,33 @@ func setqueue(q *ibmmq.MQObject) {
 	queue = q
 }
 
-func Init(Connectionstring, qMgrName, qName string) error {
+func Init(channelname, connectionname, qMgrName, qName, userid, password string) error {
 
-	os.Setenv("MQSERVER", Connectionstring)
+	//os.Setenv("MQSERVER", Connectionstring)
 
-	log.Printf("Attempting connection to Queue Manager: %s\n", qMgrName)
+	//log.Printf("Attempting connection to Queue Manager: %s\n", qMgrName)
 
-	// 2. INITIALIZE MINIMAL CONNECTION STRUCT
-	// We drop 'cd := ibmmq.NewMQCD()' completely to sidestep struct size parsing flaws.
 	cno := ibmmq.NewMQCNO()
 
 	// Direct client routing flag forces MQ to fetch parameters out of the OS environment.
 	cno.Options = ibmmq.MQCNO_CLIENT_BINDING
+
+	cd := ibmmq.NewMQCD()
+	cd.ChannelName = channelname       //"DEV.APP.SVRCONN"
+	cd.ConnectionName = connectionname //"localhost(1414)" // Adjust to your container IP/Port if different
+	cno.ClientConn = cd
+
+	csp := ibmmq.NewMQCSP()
+	csp.AuthenticationType = ibmmq.MQCSP_AUTH_USER_ID_AND_PWD
+	csp.UserId = userid //"app"
+	decpasssword, err := utils.Decodebase64(password)
+	if err != nil {
+		csp.Password = password //"passw0rd"
+	} else {
+		csp.Password = decpasssword //"passw0rd"
+	}
+
+	cno.SecurityParms = csp
 
 	// 3. CONNECT TO THE QUEUE MANAGER
 	qMgr, err := ibmmq.Connx(qMgrName, cno)

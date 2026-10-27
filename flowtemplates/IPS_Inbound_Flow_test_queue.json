@@ -10,7 +10,7 @@
     "userid": "",
     "password": ""
   },
-  "messagefilepath": "messagetemplates\\ips_pacs8_template.txt",
+  "messagefilepath": "messagetemplates/ips_pacs8_template.txt",
   "Wholemessageprocesses": [
     {
       "order": 1,
@@ -19,7 +19,7 @@
         "KEYSTORE_PASSWORD": "password2",
         "KEY_PASSWORD": "password2",
         "LOCAL_PART": "Message",
-        "KEYSTORE_LOCATION": "D:\\code\\GoCode\\stresstester\\files\\ips.jks",
+        "KEYSTORE_LOCATION": "/files/ips.jks",
         "KEY_ALIAS": "ips"
       }
     }

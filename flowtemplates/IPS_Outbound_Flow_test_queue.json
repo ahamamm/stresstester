@@ -10,7 +10,7 @@
     "userid": "",
     "password": ""
   },
-  "messagefilepath": "messagetemplates\\temp1.txt",
+  "messagefilepath": "messagetemplates/temp1.txt",
   "precalls": [
     {
       "order": 1,
@@ -18,7 +18,7 @@
       "endpointtype": "SOAPWebService",
       "endpointurl": "http://10.11.34.16:7837/AlRajhiCustAccount/BookedEntrySvcTrxn?",
       "httpmethod": "POST",
-      "messagefilepath": "messagetemplates\\bookentry-create-precall.txt",
+      "messagefilepath": "messagetemplates/bookentry-create-precall.txt",
       "statusxpath": "/soapenv:Envelope/soapenv:Body/rca:BookedEntrySvcTrxnRs/Hdr/arb:Status/arb:StatusCd",
       "statussuccessvalue": "I000000",
       "timeout": 10,

@@ -2,7 +2,7 @@
   "name": "Test Template 2",
   "endpointtype": "IBMQM",
   "Ibmmqconninfo": {
-    "connectionname": "localhost(1414)",
+    "connectionname": "my-ibm-mq(1414)",
     "channelname": "DEV.APP.SVRCONN",
     "queuemanager": "QM1",
     "queuename": "DEV.QUEUE.1",

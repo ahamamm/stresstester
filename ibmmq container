@@ -66,7 +66,7 @@ do step 1 then
 # Alternative A: Allow a specific application user ID (e.g., 'app')
 SET CHLAUTH('DEV.APP.SVRCONN') TYPE(USERMAP) CLNTUSER('app') USERSRC(MAP) MCAUSER('app') ACTION(REPLACE)
 
-# Alternative B: Just clear the block rule completely on the dev channel
+# Alternative B: Just clear the block rule completely on the dev channel(recommended)
 SET CHLAUTH('DEV.APP.SVRCONN') TYPE(ADDRESSMAP) ADDRESS('*') USERSRC(CHANNEL) ACTION(REPLACE)
 
 # Always refresh security after changes

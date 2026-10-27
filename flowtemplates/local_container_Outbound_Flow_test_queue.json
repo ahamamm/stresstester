@@ -1,0 +1,33 @@
+{
+  "name": "Test Template 2",
+  "endpointtype": "IBMQM",
+  "Ibmmqconninfo": {
+    "connectionname": "my-ibm-mq(1414)",
+    "channelname": "DEV.APP.SVRCONN",
+    "queuemanager": "QM1",
+    "queuename": "DEV.QUEUE.1",
+    "authenticationtype": "MQCSP_AUTH_USER_ID_AND_PWD",
+    "userid": "app",
+    "password": "cGFzc3cwcmQ="
+  },
+  "messagefilepath": "messagetemplates/temp1.txt",
+  "precalls": [
+    {
+      "order": 1,
+      "name": "bookentry-create",
+      "endpointtype": "SOAPWebService",
+      "endpointurl": "http://10.11.34.16:7837/AlRajhiCustAccount/BookedEntrySvcTrxn?",
+      "httpmethod": "POST",
+      "messagefilepath": "messagetemplates/bookentry-create-precall.txt",
+      "statusxpath": "/soapenv:Envelope/soapenv:Body/rca:BookedEntrySvcTrxnRs/Hdr/arb:Status/arb:StatusCd",
+      "statussuccessvalue": "I000000",
+      "timeout": 10,
+      "variables": [
+        {
+          "variablename": "bookentryref",
+          "variablexpath": "/soapenv:Envelope/soapenv:Body/rca:BookedEntrySvcTrxnRs/Body/BookingInfo/BookedEntryRefNum"
+        }
+      ]
+    }
+  ]
+}

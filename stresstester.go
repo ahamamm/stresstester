@@ -71,7 +71,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	//fmt.Printf("%#v\n", connectionParam )
+	//fmt.Printf("%#v\n", connectionParam)
 
 	var pickedworker stressworkers.Workerinterface
 	err, pickedworker = pickers.Workerpicker(strategy, per, connectionParam.Endpointtype, frqnc, duration)

@@ -1,6 +1,7 @@
 package mqutil
 
 import (
+	"log"
 	"stresstester/utils"
 	"sync"
 
@@ -28,11 +29,11 @@ func setqueue(q *ibmmq.MQObject) {
 	queue = q
 }
 
-func Init(channelname, connectionname, qmgrName, qName, authenticationType, userid, password string) error {
+func Init(channelname, connectionname, qmgrname, qname, authenticationtype, userid, password string) error {
 
 	//os.Setenv("MQSERVER", Connectionstring)
 
-	//log.Printf("Attempting connection to Queue Manager: %s\n", qMgrName)
+	log.Printf("Attempting connection to Queue Manager: %s\n", qmgrname)
 
 	cno := ibmmq.NewMQCNO()
 
@@ -46,7 +47,7 @@ func Init(channelname, connectionname, qmgrName, qName, authenticationType, user
 
 	var csp *ibmmq.MQCSP
 
-	switch authenticationType {
+	switch authenticationtype {
 	case "MQCSP_AUTH_USER_ID_AND_PWD":
 		csp = ibmmq.NewMQCSP()
 		csp.AuthenticationType = ibmmq.MQCSP_AUTH_USER_ID_AND_PWD
@@ -64,7 +65,7 @@ func Init(channelname, connectionname, qmgrName, qName, authenticationType, user
 	}
 
 	// 3. CONNECT TO THE QUEUE MANAGER
-	qMgr, err := ibmmq.Connx(qmgrName, cno)
+	qMgr, err := ibmmq.Connx(qmgrname, cno)
 	if err != nil {
 		return err
 	}
@@ -72,7 +73,7 @@ func Init(channelname, connectionname, qmgrName, qName, authenticationType, user
 
 	// 4. SET OPEN OPTIONS FOR OUTPUT (SENDING)
 	od := ibmmq.NewMQOD()
-	od.ObjectName = qName
+	od.ObjectName = qname
 	openOptions := ibmmq.MQOO_OUTPUT
 
 	// 5. OPEN THE QUEUE

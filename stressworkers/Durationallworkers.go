@@ -61,7 +61,8 @@ func (sw Durationallworkers) Run(workers *int, messages *int, frequency *int, du
 	// Start workers
 	for w := 1; w <= *workers; w++ {
 		wg.Add(1)
-		go durationAllWorkersSender(w, connector, inputCh, resultsCh, &wg)
+		conn := connector
+		go durationAllWorkersSender(w, conn, inputCh, resultsCh, &wg)
 	}
 
 	sendBurst := func() {

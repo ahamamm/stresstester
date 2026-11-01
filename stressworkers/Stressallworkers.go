@@ -36,7 +36,8 @@ func (sw Stressallworkers) Run(workers *int, messages *int, frequency *int, dura
 	// Start workers
 	for w := 1; w <= *workers; w++ {
 		wg.Add(1)
-		go simpleAllWorkerSender(w, connector, inputCh, resultsCh, &wg)
+		conn := connector
+		go simpleAllWorkerSender(w, conn, inputCh, resultsCh, &wg)
 	}
 
 	for i := 0; i < *messages; i++ {

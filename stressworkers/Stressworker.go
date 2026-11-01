@@ -67,7 +67,8 @@ func (sw Stressworker) Run(workers *int, messages *int, frequency *int, duration
 
 func simpleWorkerSender(workerNumber int, messageumber int, messageTemp string, connectionParam *flowcontextloader.Contextmapper, connector connectors.Connectorinterface /*jobs <-chan int,*/, results chan<- string, errs chan<- WorkerErr, wg *sync.WaitGroup) {
 	defer wg.Done()
-	rtnMessage, err, outworkerNumber, count := SendNumberOfMessages(workerNumber, messageumber, messageTemp, connectionParam, connector)
+	conn := connector
+	rtnMessage, err, outworkerNumber, count := SendNumberOfMessages(workerNumber, messageumber, messageTemp, connectionParam, conn)
 	if err != nil {
 		workerErr := WorkerErr{WorkerNumber: outworkerNumber, Count: count, Err: err}
 		errs <- workerErr

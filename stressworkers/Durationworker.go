@@ -44,7 +44,8 @@ func (sw Durationworker) Run(workers *int, messages *int, frequency *int, durati
 	// Start workers
 	for w := 1; w <= *workers; w++ {
 		wg.Add(1)
-		go durationWorkerSender(w, *messages, *frequency, *duration, messageTemp, connectionParam, connector, resultsCh, &wg)
+		conn := connector
+		go durationWorkerSender(w, *messages, *frequency, *duration, messageTemp, connectionParam, conn, resultsCh, &wg)
 	}
 
 	// Wait for all workers to finish in a background goroutine

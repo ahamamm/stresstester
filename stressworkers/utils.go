@@ -57,7 +57,7 @@ func SendNumberOfMessages(workerNumber int, messageumber int, messageTemp string
 		}
 		count++
 	}
-	connector.Close()
+	defer connector.Close()
 
 	return fmt.Sprintf("Worker %d finished job and %d %s", workerNumber, count, " Message(s) sent ��� successfully!"), nil, workerNumber, count
 }
